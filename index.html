@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Steve Dawson - Director</title>
+
+  
+  
+  <style>
+* {
+  margin: 0px;
+  padding: 0px;
+
+}
+
+body{
+background-image: url("images/bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-overflow: hidden;
+}
+
+.topbar {
+  border:  none;
+  background: #000000 none repeat scroll 0%;
+  height: 65px;
+  font-family: Georgia,serif;
+  font-size: 20px;
+  font-weight: normal;
+  color: #dddddd;
+  vertical-align: middle;
+  letter-spacing: 3px;
+}
+.bottombar {
+  border:  none;
+  background: #000000 none repeat scroll 0%;
+  position: relative;
+  bottom: 0px;
+  left: 0px;
+  height: 65px;
+  width: 100%;
+  font-family: Georgia,serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: #dddddd;
+  vertical-align: middle;
+  letter-spacing: 2px;
+}
+
+.bottombar a{
+background: #000000 none repeat scroll 0%;
+font-family: Georgia,serif;
+font-size: 18px;
+font-weight: normal;
+color: #dddddd;
+vertical-align: middle;
+letter-spacing: 2px;
+}
+
+.vidtitle {
+  font-family: Georgia,serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.client {
+  font-family: Georgia,serif;
+  font-size: 10px;
+  font-weight: normal;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+.description {
+  font-family: Georgia,serif;
+  font-size: 7px;
+  font-weight: normal;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+.vidblock {
+  width: 320px;
+}
+li {
+width: 330px;
+min-height: 180px;
+border: 0px ;
+display: -moz-inline-stack;
+display: inline-block;
+vertical-align: top;
+margin: 0px;
+padding: 0px;
+zoom: 1;
+*display: inline;
+_height: 180px;
+}
+
+ul {
+margin-left:15px;
+}
+
+  </style>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  
+  <script type="text/javascript">
+$(document).ready(function() {
+
+$(function listBooks() {
+
+$.getJSON( "https://spreadsheets.google.com/feeds/list/1fQRTLFBQr66Cwo3f93ke2XnvSzGSLhkYAHeDuu20lk0/od6/public/values?alt=json-in-script&callback=?",
+
+
+function (data) {
+
+$('div#show-list').append('<ul class="items" ></ul>');
+
+$.each(data.feed.entry, function(i,entry) {
+
+var item = '';
+
+item += '<div class="vidblock">' + entry.gsx$embed1.$t + entry.gsx$embed2.$t + entry.gsx$embed3.$t + '';
+item += '<div class="vidtitle">' + entry.gsx$title.$t + ' (' + entry.gsx$year.$t + ')' + '</div>';
+item += '<div class="client">' + entry.gsx$client.$t + '</div>';
+item += '<div class="description">' + entry.gsx$description.$t + '<br><br></div>';
+item += '</div>';
+
+$('.items').append('<li>' + item + '</li>');
+
+});
+});
+});
+});
+  </script>
+</head><body>
+<div class="topbar"><br>
+&nbsp; Steve Dawson // Director
+</div>
+
+<div id="show-list" align="center">&nbsp;</div>
+
+<br>
+
+<div class="bottombar"> <br>
+&nbsp; Contact: <a href="http://www.curtisbrown.co.uk/the-dawson-brothers/">Curtis Brown</a>
+// <a href="https://twitter.com/SDawsonBros">@sdawsonbros</a> // <a href="http://dawsonbros.com">dawsonbros.com</a></div>
+
+</body></html>
