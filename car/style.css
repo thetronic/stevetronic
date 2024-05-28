@@ -13,17 +13,20 @@ body {
 
 .gallery-item {
   width: calc(33% - 20px); /* Account for margins */
-  aspect-ratio: 1;
   margin: 10px;
   text-decoration: none; /* Remove underline from links */
   overflow: hidden; /* Hide overflowing image content */
   position: relative;
+  padding-top: 33%; /* Ensures the aspect ratio is 1:1 by setting height */
 }
 
 .gallery-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Crop image to fit container */
+  object-fit: cover; /* Ensures the image covers the entire container */
   transition: transform 0.3s ease; /* Add hover effect */
 }
 

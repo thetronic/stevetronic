@@ -11,13 +11,15 @@ function loadData() {
         console.log(item.link)
         image.src = item.image
         image.alt = 'Image' // Add an alt attribute for accessibility
-        image.setAttribute('class', 'gallery-item')
 
         image.addEventListener('click', () => {
           window.location.href = item.link
         })
 
-        dataDiv.appendChild(image)
+        const galleryitem = document.createElement('div')
+        galleryitem.setAttribute('class', 'gallery-item')
+        galleryitem.append(image)
+        dataDiv.appendChild(galleryitem)
       })
     })
     .catch((error) => console.error('Error loading data:', error))
