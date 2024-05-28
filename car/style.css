@@ -13,6 +13,7 @@ body {
 
 .gallery-item {
   width: calc(33% - 20px); /* Account for margins */
+  aspect-ratio: 1;
   margin: 10px;
   text-decoration: none; /* Remove underline from links */
   overflow: hidden; /* Hide overflowing image content */
