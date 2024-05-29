@@ -66,5 +66,13 @@
   {
     "link": "https://www.bbc.co.uk/iplayer/episodes/b006z39g/shaun-the-sheep",
     "image": "images/shaun.jpeg"
+  },
+  {
+    "link": "https://www.disneyplus.com/en-gb/series/the-muppet-show/Rgks70YwIkSw",
+    "image": "images/muppets.jpeg"
+  },
+  {
+    "link": "https://www.youtube.com/watch?v=yQj2NP25TIo&list=PLs2dUNOxhpmLgg4hhfxP3qrOn_hNpeMM7",
+    "image": "images/beaker.jpeg"
   }
 ]
