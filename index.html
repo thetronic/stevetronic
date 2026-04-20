@@ -1,152 +1,396 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<!GitHub>
-<html><head>
-  
-  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>Steve Dawson - Director</title>
-
-  
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
-* {
-  margin: 0px;
-  padding: 0px;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-}
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111;
+      --border: #222;
+      --accent: #e8ff47;
+      --text: #f0ede6;
+      --muted: #666;
+      --radius: 6px;
+    }
 
-body{
-background-image: url("images/bg.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-overflow: hidden;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      max-width: 150vh;
+      margin: 10px auto;
+      display: flex;
+      flex-direction: column;
+    }
 
-.topbar {
-  border:  none;
-  background: #000000 none repeat scroll 0%;
-  height: 65px;
-  font-family: Georgia,serif;
-  font-size: 20px;
-  font-weight: normal;
-  color: #dddddd;
-  vertical-align: middle;
-  letter-spacing: 3px;
-}
-.bottombar {
-  border:  none;
-  background: #000000 none repeat scroll 0%;
-  position: relative;
-  bottom: 0px;
-  left: 0px;
-  height: 65px;
-  width: 100%;
-  font-family: Georgia,serif;
-  font-size: 18px;
-  font-weight: normal;
-  color: #dddddd;
-  vertical-align: middle;
-  letter-spacing: 2px;
-}
+    /* ── HEADER ── */
+    header {
+      padding: 28px 40px 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--text);
+    }
+    header span {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-.bottombar a{
-background: #000000 none repeat scroll 0%;
-font-family: Georgia,serif;
-font-size: 18px;
-font-weight: normal;
-color: #dddddd;
-vertical-align: middle;
-letter-spacing: 2px;
-}
+    /* ── MAIN PLAYER ── */
+    .player-wrap {
+      padding: 32px 40px 24px;
+      flex: 1;
+    }
+    .player-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+    .player-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+      letter-spacing: 0.03em;
+      color: var(--text);
+    }
+    .player-badge {
+      background: var(--accent);
+      color: #000;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .player-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      max-width: 640px;
+      line-height: 1.5;
+    }
 
-.vidtitle {
-  font-family: Georgia,serif;
-  font-size: 10px;
-  font-weight: bold;
-  color: #ffffff;
-  letter-spacing: 2px;
-  text-transform: capitalize;
-}
-.client {
-  font-family: Georgia,serif;
-  font-size: 10px;
-  font-weight: normal;
-  color: #ffffff;
-  letter-spacing: 2px;
-}
-.description {
-  font-family: Georgia,serif;
-  font-size: 7px;
-  font-weight: normal;
-  color: #ffffff;
-  letter-spacing: 2px;
-}
-.vidblock {
-  width: 320px;
-}
-li {
-width: 330px;
-min-height: 180px;
-border: 0px ;
-display: -moz-inline-stack;
-display: inline-block;
-vertical-align: top;
-margin: 0px;
-padding: 0px;
-zoom: 1;
-*display: inline;
-_height: 180px;
-}
+    .player-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .player-stage video,
+    .player-stage iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
 
-ul {
-margin-left:15px;
-}
+    /* ── SECTIONS ── */
+    .sections-wrap {
+      border-top: 1px solid var(--border);
+    }
+    .section-block {
+      padding: 24px 40px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-block:last-child {
+      border-bottom: none;
+      padding-bottom: 36px;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+    .section-count {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .section-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin-left: 8px;
+    }
+    .rail {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+    }
 
+    .card {
+      cursor: pointer;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--surface);
+      transition: border-color 0.18s, transform 0.18s;
+      position: relative;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .card:hover .card-thumb img { opacity: 1; }
+    .card.active .card-thumb img { opacity: 1; }
+
+    .play-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .play-icon svg {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,.7));
+      opacity: 0.85;
+      transition: opacity 0.2s, transform 0.18s;
+    }
+    .card:hover .play-icon svg,
+    .card.active .play-icon svg {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .card-info {
+      padding: 10px 12px 11px;
+    }
+    .card-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .card-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* active indicator bar */
+    .card.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      header, .player-wrap, .section-block { padding-left: 20px; padding-right: 20px; }
+      .rail { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+    }
   </style>
-  
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-  </script>
-  
-  <script type="text/javascript">
-$(document).ready(function() {
+</head>
+<body>
 
-$(function listBooks() {
+<header>
+  <h1>STEVE DAWSON</h1>
+  <span>EDITING &nbsp &nbsp SOUND &nbsp &nbsp GRADING &nbsp &nbsp MOTION GRAPHICS 
+</header>
 
-$.getJSON( "https://spreadsheets.google.com/feeds/list/1fQRTLFBQr66Cwo3f93ke2XnvSzGSLhkYAHeDuu20lk0/od6/public/values?alt=json-in-script&callback=?",
-
-
-function (data) {
-
-$('div#show-list').append('<ul class="items" ></ul>');
-
-$.each(data.feed.entry, function(i,entry) {
-
-var item = '';
-
-item += '<div class="vidblock">' + entry.gsx$embed1.$t + entry.gsx$embed2.$t + entry.gsx$embed3.$t + '';
-item += '<div class="vidtitle">' + entry.gsx$title.$t + ' (' + entry.gsx$year.$t + ')' + '</div>';
-item += '<div class="client">' + entry.gsx$client.$t + '</div>';
-item += '<div class="description">' + entry.gsx$description.$t + '<br><br></div>';
-item += '</div>';
-
-$('.items').append('<li>' + item + '</li>');
-
-});
-});
-});
-});
-  </script>
-</head><body>
-<div class="topbar"><br>
-&nbsp; Steve Dawson // Director
+<div class="player-wrap">
+  <div class="player-meta">
+    <div class="player-title" id="mainTitle">Main Showreel</div>
+    <div class="player-badge" id="mainBadge">Now Playing</div>
+  </div>
+  <div class="player-desc" id="mainDesc">A mix of broadcast and online content, including music videos, sketches and short films.</div>
+  <div class="player-stage">
+    <video id="mainVideo" controls autoplay preload="metadata">
+      <source src="videos/showreel.mp4" type="video/mp4"/>
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
 </div>
 
-<div id="show-list" align="center">&nbsp;</div>
+<div class="sections-wrap" id="sectionsWrap"></div>
 
-<br>
+<script>
+  // ── Video data ──────────────────────────────────────────────
+  // Add your own videos under each category. Replace src/thumbnail with your hosted URLs.
+  const categories = [
+    {
+      label: "Narrative & Music Video",
+      videos: [
+        {
+          title: "Showreel",
+          subtitle: "",
+          desc: "A mix of broadcast and online content, including music videos, sketches and short films.",
+          src: "videos/showreel.mp4",
+          thumbnail: "thumbnails/Showreel1.png"
+        },
+        {
+          title: "Advertising Advert",
+          subtitle: "Internal Promo",
+          desc: "Character comedian's video to advertise his services to ad agencies.",
+          src: "videos/Advertising Advert.mp4",
+          thumbnail: "thumbnails/Advertising Advert.png"
+        },
+        {
+          title: "History - Groove Armada",
+          subtitle: "Music Video",
+          desc: "A parody dance battle commissioned for Groove Armada.",
+          src: "videos/Dance It Up.mp4",
+          thumbnail: "thumbnails/Dance It Up.png"
+        },
+        {
+          title: "Elara",
+          subtitle: "Short Film",
+          desc: "Nominee at the Oxford International Short Film Festival. Directed by Ash Verjee",
+          src: "videos/Elara.mp4",
+          thumbnail: "thumbnails/Elara.png"
+        },
+        {
+          title: "British Baby Names",
+          subtitle: "TikTok: 17m Views",
+          desc: "17m Views. Viral TikTok sketch made from manipulated footage and audio.",
+          src: "videos/Baby Names.mp4",
+          thumbnail: "thumbnails/Baby Names.png"
+        }
+      ]
+    },
+    
+  ];
+  // ────────────────────────────────────────────────────────────
 
-<div class="bottombar"> <br>
-&nbsp; Contact: <a href="http://www.curtisbrown.co.uk/the-dawson-brothers/">Curtis Brown</a>
-// <a href="https://twitter.com/SDawsonBros">@sdawsonbros</a> // <a href="http://dawsonbros.com">dawsonbros.com</a></div>
+  // Flatten videos with a global index for the player
+  const allVideos = categories.flatMap(c => c.videos);
 
-</body></html>
+  const sectionsWrap = document.getElementById('sectionsWrap');
+  const mainVideo    = document.getElementById('mainVideo');
+  const mainTitle    = document.getElementById('mainTitle');
+  const mainDesc     = document.getElementById('mainDesc');
+
+  let activeGlobalIdx = 0;
+
+  function playVideo(globalIdx) {
+    const v = allVideos[globalIdx];
+    activeGlobalIdx = globalIdx;
+
+    mainTitle.textContent = v.title;
+    mainDesc.textContent  = v.desc;
+
+    mainVideo.src = v.src;
+    mainVideo.load();
+    mainVideo.play().catch(() => {});
+
+    document.querySelectorAll('.card').forEach((c, i) => {
+      c.classList.toggle('active', i === globalIdx);
+    });
+  }
+
+  function buildCard(v, globalIdx) {
+    const card = document.createElement('div');
+    card.className = 'card' + (globalIdx === 0 ? ' active' : '');
+    card.title = v.title;
+    card.innerHTML = `
+      <div class="card-thumb">
+        ${v.thumbnail
+          ? `<img src="${v.thumbnail}" alt="${v.title}" loading="lazy"/>`
+          : `<img src="" alt="${v.title}" style="display:none"/>`}
+        <div class="play-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="23" fill="rgba(0,0,0,.45)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+            <path d="M20 16.5L33 24L20 31.5V16.5Z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">${v.title}</div>
+        ${v.subtitle ? `<div class="card-sub">${v.subtitle}</div>` : ''}
+      </div>`;
+    card.addEventListener('click', () => playVideo(globalIdx));
+    return card;
+  }
+
+  // Build sections
+  let globalIdx = 0;
+  categories.forEach(cat => {
+    const block = document.createElement('div');
+    block.className = 'section-block';
+
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = `
+      <div class="section-title">${cat.label}</div>
+      <div class="section-count">${cat.videos.length} video${cat.videos.length !== 1 ? 's' : ''}</div>
+      <div class="section-divider"></div>`;
+    block.appendChild(header);
+
+    const rail = document.createElement('div');
+    rail.className = 'rail';
+    cat.videos.forEach(v => {
+      rail.appendChild(buildCard(v, globalIdx++));
+    });
+    block.appendChild(rail);
+    sectionsWrap.appendChild(block);
+  });
+
+  // Auto-advance
+  mainVideo.addEventListener('ended', () => {
+    const next = (activeGlobalIdx + 1) % allVideos.length;
+    playVideo(next);
+  });
+</script>
+</body>
+</html>
